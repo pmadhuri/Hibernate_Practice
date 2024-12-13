@@ -1,0 +1,70 @@
+package com.oneToOneMapping;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import com.entityClass.Passport;
+import com.entityClass.Person;
+
+public class App {
+
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure("com/oneToOneMapping/hibernate.cfg.xml");
+		 SessionFactory sf= cfg.buildSessionFactory();
+		 Session session=sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		 //*************start**************************
+		 
+		 Person p1=new Person();
+		 p1.setpId(11); 
+		 p1.setpName("Kaka");
+		 //
+		 Person p2=new Person();
+		 p2.setpId(22); 
+		 p2.setpName("Mama");
+		 //
+		 Person p3=new Person();
+		 p3.setpId(33); 
+		 p3.setpName("Sasa");
+		 //**********************Passport**********************************
+		 Passport pp1=new Passport();
+		 pp1.setPpId(234);
+		 pp1.setPpName("MamaPP");
+		 //
+		 Passport pp2=new Passport();
+		 pp2.setPpId(456);
+		 pp2.setPpName("SasaPP");
+		 //
+		 Passport pp3=new Passport();
+		 pp3.setPpId(987);
+		 pp3.setPpName("KakaPP");
+		 //******************************************
+		 
+		 
+		 p1.setPassport(pp3);//person 1 is Kaka & pp- KakaPP
+		 p2.setPassport(pp1);//person 2 is Mama  & PP-  MamaPP
+		 p3.setPassport(pp2);//person 3 is Sasa  & pp-SS
+		//******************************************
+		 
+		 pp1.setPerson(p2);
+		 pp2.setPerson(p3);
+		 pp3.setPerson(p1);
+		 
+		 
+		 // save then data stored/ insert in database
+		 session.save(p1);
+		 session.save(p2);
+		 session.save(p3);
+		 session.save(pp1);
+		 session.save(pp2);
+		 session.save(pp3);
+		 
+		 tx.commit();
+		 session.close();
+
+	}
+
+}

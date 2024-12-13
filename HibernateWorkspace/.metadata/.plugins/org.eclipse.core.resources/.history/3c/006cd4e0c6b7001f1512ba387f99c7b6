@@ -1,0 +1,31 @@
+package com.hibernate.customQuery;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+
+import com.entityClass.Passenger;
+
+public class GetData {
+
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure("hiberDemo/HibernateDemo/hibernate.cfg.xml");
+		 SessionFactory sf= cfg.buildSessionFactory();
+		 Session session=sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		//****************start*****************************
+		String hql="from Passenger";
+	      Query q=session.createQuery(hql);
+	          List<Passenger> list=q.list();
+	          for(Passenger p:list) {
+	        	  System.out.println(p);
+	        	  
+	          }
+	}
+
+}

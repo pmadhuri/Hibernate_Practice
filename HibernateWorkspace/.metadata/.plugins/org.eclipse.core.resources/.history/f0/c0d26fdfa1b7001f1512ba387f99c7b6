@@ -1,0 +1,13 @@
+package com.hibernate.DemoFirst;
+
+/**
+ * Hello world!
+ *
+ */
+public class InsertData 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    }
+}

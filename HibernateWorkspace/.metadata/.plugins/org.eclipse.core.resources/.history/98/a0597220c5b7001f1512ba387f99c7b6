@@ -1,0 +1,34 @@
+package com.hibernate.customQuery;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class InsertData {
+
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure("hiberDemo/HibernateDemo/hibernate.cfg.xml");
+		 SessionFactory sf= cfg.buildSessionFactory();
+		 Session session=sf.openSession();
+		 Transaction tx=session.beginTransaction();
+		//****************start*****************************
+		String hql= "insert into Passenger (psID,age,city,name) "
+		 + "values (:psID,:age,:city,:name)";
+		org.hibernate.query.Query query=session.createQuery(hql);
+		query.setParameter("psID", 102);
+		query.setParameter("age", 30);
+		query.setParameter("city", "pune");
+		query.setParameter("name", "madhuri");
+		int executeUpdate=query.executeUpdate();
+		System.out.println(executeUpdate);
+		//output************IMP sequence of the field plz check with Entity class eg. (Passenger class)
+//		Hibernate: insert into Passenger(psID,age,city,name) values (?,?,?,?)
+//		1
+		tx.commit();
+		 session.close();
+
+	}
+
+}

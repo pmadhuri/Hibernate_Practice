@@ -25,12 +25,20 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
+			<item value="com.hibernate.InheritenceStrategy"/>
+			<item value="com.hibernate.CriteriaAPIApplication"/>
+			<item value="com.hibernate.DemoSecond"/>
+			<item value="com.hibernate.SecondDemo"/>
 			<item value="com.hibernate.DemoFirst"/>
 		</list>
 		<list key="groupId">
 			<item value="com.hibernate"/>
 		</list>
 		<list key="artifactId">
+			<item value="InheritenceStrategy"/>
+			<item value="CriteriaAPIApplication"/>
+			<item value="DemoSecond"/>
+			<item value="SecondDemo"/>
 			<item value="DemoFirst"/>
 		</list>
 		<list key="projectNameTemplate">

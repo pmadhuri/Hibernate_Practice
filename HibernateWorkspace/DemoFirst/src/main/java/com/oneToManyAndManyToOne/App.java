@@ -49,8 +49,8 @@ public class App {
 		 al1.add(cc1);
 		 
 		 ArrayList<City> al2=new ArrayList<City>();//al1 for USA
-		 al1.add(cc2);
-		 al1.add(cc3);
+		 al2.add(cc2);
+		 al2.add(cc3);
 		 
 		 c1.setCity(al1);
 		 c2.setCity(al2);
